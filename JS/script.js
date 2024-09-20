@@ -1,109 +1,42 @@
-let nombre = prompt ("Ingresa tu nombre")
-let apellido = prompt ("Ingresa tu apellido")
+let items = [
+    {name:"Remera", price: 20000, stock: 7},
+    {name:"Buzo", price: 15000, stock: 12},
+    {name:"Pantalon", price: 25000, stock: 4},
+]
 
-let nombrecompleto = nombre + " " + apellido
+let itemsJSON = JSON.stringify(items)
 
-let consulta = prompt ("Desea comprar una prenda? (SI/NO)")
+localStorage.setItem("items", itemsJSON)
 
-if (consulta == "SI") {
-    console.log ("Bienvenido a la tienda", nombrecompleto)
-} else {
-    console.warn ("Hasta luego", nombrecompleto)
-}
+let itemGuardado = localStorage.getItem("items")
 
-let entrada1 = prompt("¿Que producto busca? (remeras/buzos/pantalones) ")
+let itemArray = JSON.parse(itemGuardado)
 
-switch (entrada1){
-    case "remeras":
-        console.log ("Este es el catalogo de remeras")
-            let catalogoremeras = [
-        {
-        nombre: "Remera Azul",
-        precio: 15000,
-        talles: ["S", "M", "L", "XL"],
-        },
-        {
-        nombre: "Remera Negro",
-        precio: 15000,
-        talles: ["M", "L", "XL"],
-        },
-        {
-        nombre: "Remera Rojo",
-        precio: 15000,
-        talles: ["S", "M"],
-        }
-        
-        ]
-        for (const producto of catalogoremeras){
-         console.log(producto)
-        }
+console.log(itemArray)
 
-        break
-    case "buzos":
-        console.log ("Este es el catalogo de buzos")
-        let catalogobuzos = [
-        {
-        nombre: "Buzo Azul",
-        precio: 30000,
-        talles: ["S", "M", "L"],
-        },
-        {
-        nombre: "Buzo Negro",
-        precio: 30000,
-        talles: ["S", "M", "L"],
-        },
-        {
-        nombre: "Buzo Rojo",
-        precio: 30000,
-        talles: ["S", "M", "L"],
-        }
-        ]
-        for (const producto of catalogobuzos){
-         console.log(producto)
-        }
-        break
-    case "pantalones":
-        console.log ("Este es el catalogo de pantalones")
-        let catalogopantalones = [
-        {
-        nombre: "Pantalon Azul",
-        precio: 40000,
-        talles: ["S", "M", "L"],
-        },
-        {
-        nombre: "Pantalón Negro",
-        precio: 40000,
-        talles: ["S", "M", "L"],
-        },
-        {
-        nombre: "Pantalon Rojo",
-        precio: 40000,
-        talles: ["S", "M", "L"],
-        }
-        ]
-        for (const producto of catalogopantalones){
-         console.log(producto)
-        }
-        break
-    default:
-        alert("No elegió ninguna opción valida")        
-}
+items.sort((a,b)=>{
+    if (a.price>b.price)
+        return 1
+    if (a.price<b.price)
+        return -1
+    return 0 
+})
 
-function agregaritem (item,precioitem){
-    console.log ("Su item seleccionado es " +item+ " y su precio es de " +precioitem+" pesos SIN ENVIO")
-}
+console.log(items)
 
-agregaritem ("remera azul", 15000)
+let nombres = items.map(item => item.name)
+console.log(nombres)
 
-let resultado = 0
+let precioTotal = items.reduce((total,item)=> total + item.price, 0)
+console.log ("Sumatoria de productos: ",precioTotal)
 
-function sumarprecio(precioA, precioB) {
-    resultado= precioA + precioB
-}
-    
-function mostrarprecio(mensaje) {
-    console.log("Total del precio "+mensaje)
-}
+document.addEventListener("DOMContentLoaded", function(){
+    let boton = document.getElementById ("boton_inicio")
+    let texto = document.getElementById ("titulo_inicio")
+    let parrafo = document.querySelector("p")
 
-sumarprecio (15000,3000)
-mostrarprecio (resultado)
+    boton.addEventListener("click", function(){
+        texto.textContent = "¡Ingresaste a la Tienda!"
+        parrafo.textContent = "Muchas Gracias"
+    })
+})
