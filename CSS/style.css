@@ -1,15 +1,22 @@
 /* Comentario */
 
 html{
-    background-color: #F1EEDC;
     font-family: "Mulish", sans-serif;
     margin: 0px;
     padding: 0px;
+    height: 100%;
+    box-sizing: border-box;
 }
 body {
-    margin: 0px
+    margin: 0px;
+    height: 100%;
 }
-
+main{
+    height: 100%;
+}
+.main-index{
+    height: auto;
+}
 header{
     display: flex;
     background-color: #E5DDC5;
