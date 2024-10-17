@@ -164,7 +164,7 @@ h1{
     text-align: center;
 }
 .box_carrito {
-    height: 500px;
+    height: 100px;
     text-align: center;
 }
 .logear{
@@ -192,6 +192,57 @@ h1{
     
 }
 
+#container-productos{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    gap: 20px;
+}
+
+.card-producto{
+    max-width: 480px;
+    max-height: 600px;
+    text-align: center;
+    background-color: #e6e0cd;
+}
+
+.card-producto img{
+    width: 350px;
+    height: 300px;
+}
+
+.card-producto button{
+    background-color: #c2baa2;
+    color: #000000;
+    padding: 6px;
+    border: unset;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.main_productos{
+    height: 900px;
+}
+
+.card-carrito{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.card-carrito img{
+    width: 300px;
+    height: 300px;
+}
+
+#productos-container{
+    width: 500px;
+    margin: auto;
+}
+
+#totales{
+    text-align: center;
+}
 @media (max-width: 480px) {
     .novedades {
         width: 100%;
