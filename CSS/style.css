@@ -1,5 +1,3 @@
-/* Comentario */
-
 html{
     font-family: "Mulish", sans-serif;
     margin: 0px;
@@ -140,7 +138,7 @@ h1{
     font-size: 20px;
 }
 
-/* FAQ */
+
 .box_acordion {
     width: 900px;
     margin: 25px auto;
