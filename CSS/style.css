@@ -192,7 +192,7 @@ h1{
     
 }
 
-#container-productos{
+#productos-container{
     display: flex;
     justify-content: center;
     margin: auto;
