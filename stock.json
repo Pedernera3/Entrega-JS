@@ -1,0 +1,9 @@
+{
+    "remeras": [
+      { "id": 1, "nombre": "Remera 1", "img": "../assets/img/remera_01.png", "cantidad": 1, "precio": 16000, "categoria": "remeras", "stock": true },
+      { "id": 2, "nombre": "Remera 2", "img": "../assets/img/remera_02.png", "cantidad": 1, "precio": 18000, "categoria": "remeras", "stock": true },
+      { "id": 3, "nombre": "Remera 3", "img": "../assets/img/remera_03.png", "cantidad": 1, "precio": 14000, "categoria": "remeras", "stock": true },
+      { "id": 4, "nombre": "Remera 4", "img": "../assets/img/remera_04.png", "cantidad": 1, "precio": 20000, "categoria": "remeras", "stock": true }
+    ]
+  }
+  
