@@ -1,7 +1,5 @@
-// Contenedor principal para los productos
 const contenedorCard = document.getElementById("productos-container");
 
-// Función para obtener los productos del archivo JSON
 async function obtenerProductos() {
     try {
         const response = await fetch('../stock.json');
@@ -12,7 +10,6 @@ async function obtenerProductos() {
     }
 }
 
-// Función para crear las tarjetas de productos
 async function crearCardProductos(categoria = 'remeras'){
     const productos = await obtenerProductos();
     if(productos && productos[categoria]){
@@ -31,7 +28,6 @@ async function crearCardProductos(categoria = 'remeras'){
     }
 }
 
-// Función para agregar productos al carrito
 function agregarAlCarrito(producto) {
     const memoria = JSON.parse(localStorage.getItem("remeras")) || [];
     const productoExistenteIndex = memoria.findIndex(remera => remera.id == producto.id);
@@ -47,14 +43,12 @@ function agregarAlCarrito(producto) {
     AvisoDeAgregado();
 }
 
-// Función auxiliar para crear un nuevo producto para la memoria
 function nuevoProductoParaMemoria(producto) {
     const nuevoProducto = { ...producto };
     nuevoProducto.cantidad = 1; 
     return nuevoProducto;
 }
 
-// Función para mostrar aviso de producto agregado
 function AvisoDeAgregado(){
     Swal.fire({
         title: "Ítem agregado al carrito",
@@ -63,13 +57,12 @@ function AvisoDeAgregado(){
     });
 }
 
-// Función para crear las tarjetas de productos en el carrito
 function crearCardProductosCarrito(){
     const productos = JSON.parse(localStorage.getItem("remeras"));
     const contenedorCarrito = document.getElementById("productos-container");
     
     if(productos && productos.length > 0){
-        contenedorCarrito.innerHTML = ''; // Limpiar el contenedor antes de agregar nuevos productos
+        contenedorCarrito.innerHTML = ''; 
         productos.forEach(producto => {
             const nuevaprenda = document.createElement("div");
             nuevaprenda.classList = "card-carrito";
@@ -94,7 +87,6 @@ function crearCardProductosCarrito(){
     }
 }
 
-// Función para modificar la cantidad de un producto en el carrito
 function modificarCantidad(id, cambio) {
     let productos = JSON.parse(localStorage.getItem("remeras"));
     const index = productos.findIndex(p => p.id === id);
@@ -109,7 +101,6 @@ function modificarCantidad(id, cambio) {
     }
 }
 
-// Función para actualizar los totales en el carrito
 function actualizarTotales() {
     const productos = JSON.parse(localStorage.getItem("remeras")) || [];
     const totalUnidades = productos.reduce((total, producto) => total + producto.cantidad, 0);
@@ -119,11 +110,10 @@ function actualizarTotales() {
     document.getElementById("precio").textContent = totalPrecio.toFixed(2);
 }
 
-// Inicialización
 document.addEventListener('DOMContentLoaded', () => {
     const path = window.location.pathname;
     if (path.includes('productos.html')) {
-        crearCardProductos('remeras');  // O la categoría que desees mostrar inicialmente
+        crearCardProductos('remeras');  
     } else if (path.includes('carrito.html')) {
         crearCardProductosCarrito();
     }
